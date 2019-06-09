@@ -1,0 +1,966 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FaridiaIronStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+            <PropertyRef Name="StationCustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nchar" MaxLength="20" />
+          <Property Name="City" Type="nchar" MaxLength="30" />
+          <Property Name="Address" Type="nvarchar" MaxLength="200" />
+          <Property Name="StationCustomerId" Type="int" Nullable="false" />
+          <Property Name="StatusCode" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemName" Type="nchar" MaxLength="30" />
+          <Property Name="Sotar" Type="nchar" MaxLength="20" />
+          <Property Name="thickness" Type="nchar" MaxLength="10" />
+          <Property Name="City" Type="nchar" MaxLength="20" />
+          <Property Name="IsExtra" Type="bit" Nullable="false" />
+          <Property Name="StatusCode" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LoanReturned">
+          <Key>
+            <PropertyRef Name="LoanReturnId" />
+            <PropertyRef Name="StationLoanReturnId" />
+          </Key>
+          <Property Name="LoanReturnId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CashReturned" Type="int" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime2" Precision="7" />
+          <Property Name="StationLoanReturnId" Type="int" Nullable="false" />
+          <Property Name="StationCustomerId" Type="int" Nullable="false" />
+          <Property Name="StatusCode" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Loans">
+          <Key>
+            <PropertyRef Name="LoanId" />
+            <PropertyRef Name="StationLoanId" />
+          </Key>
+          <Property Name="LoanId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CashGiven" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime2" Precision="7" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="StationLoanId" Type="int" Nullable="false" />
+          <Property Name="StationCustomerId" Type="int" Nullable="false" />
+          <Property Name="StatusCode" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="LoginId" />
+          </Key>
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LoginId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Designation" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+            <PropertyRef Name="StationOrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="OrderDate" Type="datetime2" Precision="7" />
+          <Property Name="Address" Type="nvarchar" MaxLength="150" />
+          <Property Name="DeliveryDate" Type="datetime2" Precision="7" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="IsAdvanceOrder" Type="bit" Nullable="false" />
+          <Property Name="IsDelivered" Type="bit" Nullable="false" />
+          <Property Name="StationOrderId" Type="int" Nullable="false" />
+          <Property Name="StationCustomerId" Type="int" Nullable="false" />
+          <Property Name="StatusCode" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderLine">
+          <Key>
+            <PropertyRef Name="OrderLineId" />
+            <PropertyRef Name="StationOrderLineId" />
+          </Key>
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="WeightInKg" Type="float" />
+          <Property Name="PricePerUnit" Type="float" />
+          <Property Name="PieceCut" Type="int" />
+          <Property Name="Bundle" Type="int" />
+          <Property Name="Lengths" Type="float" />
+          <Property Name="OrderLineId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StationOrderLineId" Type="int" Nullable="false" />
+          <Property Name="StationOrderId" Type="int" Nullable="false" />
+          <Property Name="StatusCode" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderPaymentMade">
+          <Key>
+            <PropertyRef Name="OrderPaymentMadeId" />
+            <PropertyRef Name="StationOrderPaymentMadeId" />
+          </Key>
+          <Property Name="OrderPaymentMadeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentMade" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime2" Precision="7" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="OrderId" Type="int" />
+          <Property Name="StationOrderPaymentMadeId" Type="int" Nullable="false" />
+          <Property Name="StationCustomerId" Type="int" Nullable="false" />
+          <Property Name="StationOrderId" Type="int" />
+          <Property Name="StatusCode" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="SupplierId" />
+            <PropertyRef Name="StationSupplierId" />
+          </Key>
+          <Property Name="SupplierId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="50" />
+          <Property Name="Phone" Type="nchar" MaxLength="20" />
+          <Property Name="Address" Type="nchar" MaxLength="150" />
+          <Property Name="City" Type="nchar" MaxLength="30" />
+          <Property Name="StationSupplierId" Type="int" Nullable="false" />
+          <Property Name="StatusCode" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SupplierBankDetail">
+          <Key>
+            <PropertyRef Name="SupplierBankId" />
+            <PropertyRef Name="StationSupplierBankId" />
+          </Key>
+          <Property Name="SupplierBankId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SupplierId" Type="int" Nullable="false" />
+          <Property Name="AccountNo" Type="nchar" MaxLength="30" />
+          <Property Name="StationSupplierBankId" Type="int" Nullable="false" />
+          <Property Name="StationSupplierId" Type="int" Nullable="false" />
+          <Property Name="StatusCode" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SupplierDuePayments">
+          <Key>
+            <PropertyRef Name="SupplierDuePaymentId" />
+            <PropertyRef Name="StationSupplierDuePaymentId" />
+          </Key>
+          <Property Name="SupplierDuePaymentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AmountToBePaid" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime2" Precision="7" />
+          <Property Name="SupplierId" Type="int" Nullable="false" />
+          <Property Name="StationSupplierDuePaymentId" Type="int" Nullable="false" />
+          <Property Name="StationSupplierId" Type="int" Nullable="false" />
+          <Property Name="StatusCode" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SupplierPaymentMade">
+          <Key>
+            <PropertyRef Name="SupplierPaymentMadeId" />
+            <PropertyRef Name="StationSupplierPaymentMadeId" />
+          </Key>
+          <Property Name="SupplierPaymentMadeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SupplierId" Type="int" Nullable="false" />
+          <Property Name="PaymentMade" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime2" Precision="7" />
+          <Property Name="StationSupplierPaymentMadeId" Type="int" Nullable="false" />
+          <Property Name="StationSupplierId" Type="int" Nullable="false" />
+          <Property Name="StatusCode" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Loan_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Loans" Type="Self.Loans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+              <PropertyRef Name="StationCustomerId" />
+            </Principal>
+            <Dependent Role="Loans">
+              <PropertyRef Name="CustomerId" />
+              <PropertyRef Name="StationCustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoanReturned_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="LoanReturned" Type="Self.LoanReturned" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+              <PropertyRef Name="StationCustomerId" />
+            </Principal>
+            <Dependent Role="LoanReturned">
+              <PropertyRef Name="CustomerId" />
+              <PropertyRef Name="StationCustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+              <PropertyRef Name="StationCustomerId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerId" />
+              <PropertyRef Name="StationCustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderLine_Item">
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
+          <End Role="OrderLine" Type="Self.OrderLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="OrderLine">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderLine_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderLine" Type="Self.OrderLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+              <PropertyRef Name="StationOrderId" />
+            </Principal>
+            <Dependent Role="OrderLine">
+              <PropertyRef Name="OrderId" />
+              <PropertyRef Name="StationOrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderPaymentMade_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="OrderPaymentMade" Type="Self.OrderPaymentMade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+              <PropertyRef Name="StationCustomerId" />
+            </Principal>
+            <Dependent Role="OrderPaymentMade">
+              <PropertyRef Name="CustomerId" />
+              <PropertyRef Name="StationCustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderPaymentMade_orders">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="OrderPaymentMade" Type="Self.OrderPaymentMade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+              <PropertyRef Name="StationOrderId" />
+            </Principal>
+            <Dependent Role="OrderPaymentMade">
+              <PropertyRef Name="OrderId" />
+              <PropertyRef Name="StationOrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierBankDetail_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="SupplierBankDetail" Type="Self.SupplierBankDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupplierId" />
+              <PropertyRef Name="StationSupplierId" />
+            </Principal>
+            <Dependent Role="SupplierBankDetail">
+              <PropertyRef Name="SupplierId" />
+              <PropertyRef Name="StationSupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierDuePayments_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="SupplierDuePayments" Type="Self.SupplierDuePayments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupplierId" />
+              <PropertyRef Name="StationSupplierId" />
+            </Principal>
+            <Dependent Role="SupplierDuePayments">
+              <PropertyRef Name="SupplierId" />
+              <PropertyRef Name="StationSupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierPaymentMade_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="SupplierPaymentMade" Type="Self.SupplierPaymentMade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupplierId" />
+              <PropertyRef Name="StationSupplierId" />
+            </Principal>
+            <Dependent Role="SupplierPaymentMade">
+              <PropertyRef Name="SupplierId" />
+              <PropertyRef Name="StationSupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FaridiaIronStoreModelStoreContainer">
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoanReturned" EntityType="Self.LoanReturned" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Loans" EntityType="Self.Loans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderLine" EntityType="Self.OrderLine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderPaymentMade" EntityType="Self.OrderPaymentMade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplierBankDetail" EntityType="Self.SupplierBankDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplierDuePayments" EntityType="Self.SupplierDuePayments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplierPaymentMade" EntityType="Self.SupplierPaymentMade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Loan_Customer" Association="Self.FK_Loan_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Loans" EntitySet="Loans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoanReturned_Customer" Association="Self.FK_LoanReturned_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="LoanReturned" EntitySet="LoanReturned" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderLine_Item" Association="Self.FK_OrderLine_Item">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="OrderLine" EntitySet="OrderLine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderLine_Order" Association="Self.FK_OrderLine_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderLine" EntitySet="OrderLine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderPaymentMade_Customer" Association="Self.FK_OrderPaymentMade_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="OrderPaymentMade" EntitySet="OrderPaymentMade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderPaymentMade_orders" Association="Self.FK_OrderPaymentMade_orders">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderPaymentMade" EntitySet="OrderPaymentMade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierBankDetail_Supplier" Association="Self.FK_SupplierBankDetail_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="SupplierBankDetail" EntitySet="SupplierBankDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierDuePayments_Supplier" Association="Self.FK_SupplierDuePayments_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="SupplierDuePayments" EntitySet="SupplierDuePayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierPaymentMade_Supplier" Association="Self.FK_SupplierPaymentMade_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="SupplierPaymentMade" EntitySet="SupplierPaymentMade" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FaridiaIronStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="LoginId" />
+          </Key>
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoginId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Designation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityContainer Name="FaridiaIronStoreEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Logins" EntityType="Self.Login" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Items" EntityType="FaridiaIronStoreModel.Item" />
+          <EntitySet Name="LoanReturneds" EntityType="FaridiaIronStoreModel.LoanReturned" />
+          <EntitySet Name="Loans" EntityType="FaridiaIronStoreModel.Loan" />
+          <EntitySet Name="Orders" EntityType="FaridiaIronStoreModel.Order" />
+          <EntitySet Name="OrderLines" EntityType="FaridiaIronStoreModel.OrderLine" />
+          <EntitySet Name="Suppliers" EntityType="FaridiaIronStoreModel.Supplier" />
+          <EntitySet Name="SupplierBankDetails" EntityType="FaridiaIronStoreModel.SupplierBankDetail" />
+          <EntitySet Name="SupplierDuePayments" EntityType="FaridiaIronStoreModel.SupplierDuePayment" />
+          <EntitySet Name="SupplierPaymentMades" EntityType="FaridiaIronStoreModel.SupplierPaymentMade" />
+          <AssociationSet Name="FK_OrderLine_Item" Association="FaridiaIronStoreModel.FK_OrderLine_Item">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="OrderLine" EntitySet="OrderLines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderLine_Order" Association="FaridiaIronStoreModel.FK_OrderLine_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderLine" EntitySet="OrderLines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierBankDetail_Supplier" Association="FaridiaIronStoreModel.FK_SupplierBankDetail_Supplier">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="SupplierBankDetail" EntitySet="SupplierBankDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierDuePayments_Supplier" Association="FaridiaIronStoreModel.FK_SupplierDuePayments_Supplier">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="SupplierDuePayment" EntitySet="SupplierDuePayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierPaymentMade_Supplier" Association="FaridiaIronStoreModel.FK_SupplierPaymentMade_Supplier">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="SupplierPaymentMade" EntitySet="SupplierPaymentMades" />
+          </AssociationSet>
+          <EntitySet Name="OrderPaymentMades" EntityType="FaridiaIronStoreModel.OrderPaymentMade" />
+          <AssociationSet Name="FK_OrderPaymentMade_orders" Association="FaridiaIronStoreModel.FK_OrderPaymentMade_orders">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderPaymentMade" EntitySet="OrderPaymentMades" />
+          </AssociationSet>
+          <EntitySet Name="Customers" EntityType="FaridiaIronStoreModel.Customer" />
+          <AssociationSet Name="FK_Loan_Customer" Association="FaridiaIronStoreModel.FK_Loan_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Loan" EntitySet="Loans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoanReturned_Customer" Association="FaridiaIronStoreModel.FK_LoanReturned_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="LoanReturned" EntitySet="LoanReturneds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Customer" Association="FaridiaIronStoreModel.FK_Order_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderPaymentMade_Customer" Association="FaridiaIronStoreModel.FK_OrderPaymentMade_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="OrderPaymentMade" EntitySet="OrderPaymentMades" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemName" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Sotar" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="thickness" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="IsExtra" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="OrderLines" Relationship="FaridiaIronStoreModel.FK_OrderLine_Item" FromRole="Item" ToRole="OrderLine" />
+          <Property Name="StatusCode" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LoanReturned">
+          <Key>
+            <PropertyRef Name="LoanReturnId" />
+            <PropertyRef Name="StationLoanReturnId" />
+          </Key>
+          <Property Name="LoanReturnId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CashReturned" Type="Int32" Nullable="false" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="7" />
+          <Property Name="StationLoanReturnId" Type="Int32" Nullable="false" />
+          <Property Name="StationCustomerId" Type="Int32" Nullable="false" />
+          <Property Name="StatusCode" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="FaridiaIronStoreModel.FK_LoanReturned_Customer" FromRole="LoanReturned" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Loan">
+          <Key>
+            <PropertyRef Name="LoanId" />
+            <PropertyRef Name="StationLoanId" />
+          </Key>
+          <Property Name="LoanId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CashGiven" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="7" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="StationLoanId" Type="Int32" Nullable="false" />
+          <Property Name="StationCustomerId" Type="Int32" Nullable="false" />
+          <Property Name="StatusCode" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="FaridiaIronStoreModel.FK_Loan_Customer" FromRole="Loan" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+            <PropertyRef Name="StationOrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="OrderDate" Type="DateTime" Precision="7" />
+          <Property Name="Address" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveryDate" Type="DateTime" Precision="7" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IsAdvanceOrder" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelivered" Type="Boolean" Nullable="false" />
+          <Property Name="StationOrderId" Type="Int32" Nullable="false" />
+          <Property Name="StationCustomerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OrderLines" Relationship="FaridiaIronStoreModel.FK_OrderLine_Order" FromRole="Order" ToRole="OrderLine" />
+          <NavigationProperty Name="OrderPaymentMades" Relationship="FaridiaIronStoreModel.FK_OrderPaymentMade_orders" FromRole="Order" ToRole="OrderPaymentMade" />
+          <Property Name="StatusCode" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="FaridiaIronStoreModel.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="OrderLine">
+          <Key>
+            <PropertyRef Name="OrderLineId" />
+            <PropertyRef Name="StationOrderLineId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="WeightInKg" Type="Double" />
+          <Property Name="PricePerUnit" Type="Double" />
+          <Property Name="PieceCut" Type="Int32" />
+          <Property Name="Bundle" Type="Int32" />
+          <Property Name="Lengths" Type="Double" />
+          <Property Name="OrderLineId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StationOrderLineId" Type="Int32" Nullable="false" />
+          <Property Name="StationOrderId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Item" Relationship="FaridiaIronStoreModel.FK_OrderLine_Item" FromRole="OrderLine" ToRole="Item" />
+          <NavigationProperty Name="Order" Relationship="FaridiaIronStoreModel.FK_OrderLine_Order" FromRole="OrderLine" ToRole="Order" />
+          <Property Name="StatusCode" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="SupplierId" />
+            <PropertyRef Name="StationSupplierId" />
+          </Key>
+          <Property Name="SupplierId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="StationSupplierId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SupplierBankDetails" Relationship="FaridiaIronStoreModel.FK_SupplierBankDetail_Supplier" FromRole="Supplier" ToRole="SupplierBankDetail" />
+          <NavigationProperty Name="SupplierDuePayments" Relationship="FaridiaIronStoreModel.FK_SupplierDuePayments_Supplier" FromRole="Supplier" ToRole="SupplierDuePayment" />
+          <NavigationProperty Name="SupplierPaymentMades" Relationship="FaridiaIronStoreModel.FK_SupplierPaymentMade_Supplier" FromRole="Supplier" ToRole="SupplierPaymentMade" />
+          <Property Name="StatusCode" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SupplierBankDetail">
+          <Key>
+            <PropertyRef Name="SupplierBankId" />
+            <PropertyRef Name="StationSupplierBankId" />
+          </Key>
+          <Property Name="SupplierBankId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SupplierId" Type="Int32" Nullable="false" />
+          <Property Name="AccountNo" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="StationSupplierBankId" Type="Int32" Nullable="false" />
+          <Property Name="StationSupplierId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Supplier" Relationship="FaridiaIronStoreModel.FK_SupplierBankDetail_Supplier" FromRole="SupplierBankDetail" ToRole="Supplier" />
+          <Property Name="StatusCode" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SupplierDuePayment">
+          <Key>
+            <PropertyRef Name="SupplierDuePaymentId" />
+            <PropertyRef Name="StationSupplierDuePaymentId" />
+          </Key>
+          <Property Name="SupplierDuePaymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AmountToBePaid" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="7" />
+          <Property Name="SupplierId" Type="Int32" Nullable="false" />
+          <Property Name="StationSupplierDuePaymentId" Type="Int32" Nullable="false" />
+          <Property Name="StationSupplierId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Supplier" Relationship="FaridiaIronStoreModel.FK_SupplierDuePayments_Supplier" FromRole="SupplierDuePayment" ToRole="Supplier" />
+          <Property Name="StatusCode" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SupplierPaymentMade">
+          <Key>
+            <PropertyRef Name="SupplierPaymentMadeId" />
+            <PropertyRef Name="StationSupplierPaymentMadeId" />
+          </Key>
+          <Property Name="SupplierPaymentMadeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SupplierId" Type="Int32" Nullable="false" />
+          <Property Name="PaymentMade" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="7" />
+          <Property Name="StationSupplierPaymentMadeId" Type="Int32" Nullable="false" />
+          <Property Name="StationSupplierId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Supplier" Relationship="FaridiaIronStoreModel.FK_SupplierPaymentMade_Supplier" FromRole="SupplierPaymentMade" ToRole="Supplier" />
+          <Property Name="StatusCode" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_OrderLine_Item">
+          <End Type="FaridiaIronStoreModel.Item" Role="Item" Multiplicity="1" />
+          <End Type="FaridiaIronStoreModel.OrderLine" Role="OrderLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="OrderLine">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderLine_Order">
+          <End Type="FaridiaIronStoreModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="FaridiaIronStoreModel.OrderLine" Role="OrderLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+              <PropertyRef Name="StationOrderId" />
+            </Principal>
+            <Dependent Role="OrderLine">
+              <PropertyRef Name="OrderId" />
+              <PropertyRef Name="StationOrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierBankDetail_Supplier">
+          <End Type="FaridiaIronStoreModel.Supplier" Role="Supplier" Multiplicity="1" />
+          <End Type="FaridiaIronStoreModel.SupplierBankDetail" Role="SupplierBankDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupplierId" />
+              <PropertyRef Name="StationSupplierId" />
+            </Principal>
+            <Dependent Role="SupplierBankDetail">
+              <PropertyRef Name="SupplierId" />
+              <PropertyRef Name="StationSupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierDuePayments_Supplier">
+          <End Type="FaridiaIronStoreModel.Supplier" Role="Supplier" Multiplicity="1" />
+          <End Type="FaridiaIronStoreModel.SupplierDuePayment" Role="SupplierDuePayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupplierId" />
+              <PropertyRef Name="StationSupplierId" />
+            </Principal>
+            <Dependent Role="SupplierDuePayment">
+              <PropertyRef Name="SupplierId" />
+              <PropertyRef Name="StationSupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierPaymentMade_Supplier">
+          <End Type="FaridiaIronStoreModel.Supplier" Role="Supplier" Multiplicity="1" />
+          <End Type="FaridiaIronStoreModel.SupplierPaymentMade" Role="SupplierPaymentMade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupplierId" />
+              <PropertyRef Name="StationSupplierId" />
+            </Principal>
+            <Dependent Role="SupplierPaymentMade">
+              <PropertyRef Name="SupplierId" />
+              <PropertyRef Name="StationSupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="OrderPaymentMade">
+          <Key>
+            <PropertyRef Name="OrderPaymentMadeId" />
+            <PropertyRef Name="StationOrderPaymentMadeId" />
+          </Key>
+          <Property Name="OrderPaymentMadeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentMade" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="7" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="OrderId" Type="Int32" />
+          <Property Name="StationOrderPaymentMadeId" Type="Int32" Nullable="false" />
+          <Property Name="StationCustomerId" Type="Int32" Nullable="false" />
+          <Property Name="StationOrderId" Type="Int32" />
+          <NavigationProperty Name="Order" Relationship="FaridiaIronStoreModel.FK_OrderPaymentMade_orders" FromRole="OrderPaymentMade" ToRole="Order" />
+          <Property Name="StatusCode" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="FaridiaIronStoreModel.FK_OrderPaymentMade_Customer" FromRole="OrderPaymentMade" ToRole="Customer" />
+        </EntityType>
+        <Association Name="FK_OrderPaymentMade_orders">
+          <End Type="FaridiaIronStoreModel.Order" Role="Order" Multiplicity="0..1" />
+          <End Type="FaridiaIronStoreModel.OrderPaymentMade" Role="OrderPaymentMade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+              <PropertyRef Name="StationOrderId" />
+            </Principal>
+            <Dependent Role="OrderPaymentMade">
+              <PropertyRef Name="OrderId" />
+              <PropertyRef Name="StationOrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+            <PropertyRef Name="StationCustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="StationCustomerId" Type="Int32" Nullable="false" />
+          <Property Name="StatusCode" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Loans" Relationship="FaridiaIronStoreModel.FK_Loan_Customer" FromRole="Customer" ToRole="Loan" />
+          <NavigationProperty Name="LoanReturneds" Relationship="FaridiaIronStoreModel.FK_LoanReturned_Customer" FromRole="Customer" ToRole="LoanReturned" />
+          <NavigationProperty Name="Orders" Relationship="FaridiaIronStoreModel.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
+          <NavigationProperty Name="OrderPaymentMades" Relationship="FaridiaIronStoreModel.FK_OrderPaymentMade_Customer" FromRole="Customer" ToRole="OrderPaymentMade" />
+        </EntityType>
+        <Association Name="FK_Loan_Customer">
+          <End Type="FaridiaIronStoreModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="FaridiaIronStoreModel.Loan" Role="Loan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+              <PropertyRef Name="StationCustomerId" />
+            </Principal>
+            <Dependent Role="Loan">
+              <PropertyRef Name="CustomerId" />
+              <PropertyRef Name="StationCustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoanReturned_Customer">
+          <End Type="FaridiaIronStoreModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="FaridiaIronStoreModel.LoanReturned" Role="LoanReturned" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+              <PropertyRef Name="StationCustomerId" />
+            </Principal>
+            <Dependent Role="LoanReturned">
+              <PropertyRef Name="CustomerId" />
+              <PropertyRef Name="StationCustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Customer">
+          <End Type="FaridiaIronStoreModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="FaridiaIronStoreModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+              <PropertyRef Name="StationCustomerId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerId" />
+              <PropertyRef Name="StationCustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderPaymentMade_Customer">
+          <End Type="FaridiaIronStoreModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="FaridiaIronStoreModel.OrderPaymentMade" Role="OrderPaymentMade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+              <PropertyRef Name="StationCustomerId" />
+            </Principal>
+            <Dependent Role="OrderPaymentMade">
+              <PropertyRef Name="CustomerId" />
+              <PropertyRef Name="StationCustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FaridiaIronStoreModelStoreContainer" CdmEntityContainer="FaridiaIronStoreEntities">
+          <EntitySetMapping Name="Logins">
+            <EntityTypeMapping TypeName="FaridiaIronStoreModel.Login">
+              <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="FaridiaIronStoreModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="FaridiaIronStoreModel.Item">
+              <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+                <ScalarProperty Name="IsExtra" ColumnName="IsExtra" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="thickness" ColumnName="thickness" />
+                <ScalarProperty Name="Sotar" ColumnName="Sotar" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoanReturneds">
+            <EntityTypeMapping TypeName="FaridiaIronStoreModel.LoanReturned">
+              <MappingFragment StoreEntitySet="LoanReturned">
+                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+                <ScalarProperty Name="StationCustomerId" ColumnName="StationCustomerId" />
+                <ScalarProperty Name="StationLoanReturnId" ColumnName="StationLoanReturnId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="CashReturned" ColumnName="CashReturned" />
+                <ScalarProperty Name="LoanReturnId" ColumnName="LoanReturnId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Loans">
+            <EntityTypeMapping TypeName="FaridiaIronStoreModel.Loan">
+              <MappingFragment StoreEntitySet="Loans">
+                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+                <ScalarProperty Name="StationCustomerId" ColumnName="StationCustomerId" />
+                <ScalarProperty Name="StationLoanId" ColumnName="StationLoanId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CashGiven" ColumnName="CashGiven" />
+                <ScalarProperty Name="LoanId" ColumnName="LoanId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="FaridiaIronStoreModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+                <ScalarProperty Name="StationCustomerId" ColumnName="StationCustomerId" />
+                <ScalarProperty Name="StationOrderId" ColumnName="StationOrderId" />
+                <ScalarProperty Name="IsDelivered" ColumnName="IsDelivered" />
+                <ScalarProperty Name="IsAdvanceOrder" ColumnName="IsAdvanceOrder" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderLines">
+            <EntityTypeMapping TypeName="FaridiaIronStoreModel.OrderLine">
+              <MappingFragment StoreEntitySet="OrderLine">
+                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+                <ScalarProperty Name="StationOrderId" ColumnName="StationOrderId" />
+                <ScalarProperty Name="StationOrderLineId" ColumnName="StationOrderLineId" />
+                <ScalarProperty Name="OrderLineId" ColumnName="OrderLineId" />
+                <ScalarProperty Name="Lengths" ColumnName="Lengths" />
+                <ScalarProperty Name="Bundle" ColumnName="Bundle" />
+                <ScalarProperty Name="PieceCut" ColumnName="PieceCut" />
+                <ScalarProperty Name="PricePerUnit" ColumnName="PricePerUnit" />
+                <ScalarProperty Name="WeightInKg" ColumnName="WeightInKg" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="FaridiaIronStoreModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+                <ScalarProperty Name="StationSupplierId" ColumnName="StationSupplierId" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupplierBankDetails">
+            <EntityTypeMapping TypeName="FaridiaIronStoreModel.SupplierBankDetail">
+              <MappingFragment StoreEntitySet="SupplierBankDetail">
+                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+                <ScalarProperty Name="StationSupplierId" ColumnName="StationSupplierId" />
+                <ScalarProperty Name="StationSupplierBankId" ColumnName="StationSupplierBankId" />
+                <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="SupplierBankId" ColumnName="SupplierBankId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupplierDuePayments">
+            <EntityTypeMapping TypeName="FaridiaIronStoreModel.SupplierDuePayment">
+              <MappingFragment StoreEntitySet="SupplierDuePayments">
+                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+                <ScalarProperty Name="StationSupplierId" ColumnName="StationSupplierId" />
+                <ScalarProperty Name="StationSupplierDuePaymentId" ColumnName="StationSupplierDuePaymentId" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="AmountToBePaid" ColumnName="AmountToBePaid" />
+                <ScalarProperty Name="SupplierDuePaymentId" ColumnName="SupplierDuePaymentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupplierPaymentMades">
+            <EntityTypeMapping TypeName="FaridiaIronStoreModel.SupplierPaymentMade">
+              <MappingFragment StoreEntitySet="SupplierPaymentMade">
+                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+                <ScalarProperty Name="StationSupplierId" ColumnName="StationSupplierId" />
+                <ScalarProperty Name="StationSupplierPaymentMadeId" ColumnName="StationSupplierPaymentMadeId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="PaymentMade" ColumnName="PaymentMade" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="SupplierPaymentMadeId" ColumnName="SupplierPaymentMadeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderPaymentMades">
+            <EntityTypeMapping TypeName="FaridiaIronStoreModel.OrderPaymentMade">
+              <MappingFragment StoreEntitySet="OrderPaymentMade">
+                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+                <ScalarProperty Name="StationOrderId" ColumnName="StationOrderId" />
+                <ScalarProperty Name="StationCustomerId" ColumnName="StationCustomerId" />
+                <ScalarProperty Name="StationOrderPaymentMadeId" ColumnName="StationOrderPaymentMadeId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="PaymentMade" ColumnName="PaymentMade" />
+                <ScalarProperty Name="OrderPaymentMadeId" ColumnName="OrderPaymentMadeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="FaridiaIronStoreModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+                <ScalarProperty Name="StationCustomerId" ColumnName="StationCustomerId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

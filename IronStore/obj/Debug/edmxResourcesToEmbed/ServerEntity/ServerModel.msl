@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FaridiaIronStoreServerModelStoreContainer" CdmEntityContainer="FaridiaIronStoreServerEntities">
+    <EntitySetMapping Name="CustomerServers">
+      <EntityTypeMapping TypeName="FaridiaIronStoreServerModel.CustomerServer">
+        <MappingFragment StoreEntitySet="CustomerServer">
+          <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+          <ScalarProperty Name="StationCustomerId" ColumnName="StationCustomerId" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemServers">
+      <EntityTypeMapping TypeName="FaridiaIronStoreServerModel.ItemServer">
+        <MappingFragment StoreEntitySet="ItemServer">
+          <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+          <ScalarProperty Name="IsExtra" ColumnName="IsExtra" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="thickness" ColumnName="thickness" />
+          <ScalarProperty Name="Sotar" ColumnName="Sotar" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoanReturnedServers">
+      <EntityTypeMapping TypeName="FaridiaIronStoreServerModel.LoanReturnedServer">
+        <MappingFragment StoreEntitySet="LoanReturnedServer">
+          <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+          <ScalarProperty Name="StationCustomerId" ColumnName="StationCustomerId" />
+          <ScalarProperty Name="StationLoanReturnId" ColumnName="StationLoanReturnId" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="CashReturned" ColumnName="CashReturned" />
+          <ScalarProperty Name="LoanReturnId" ColumnName="LoanReturnId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoansServers">
+      <EntityTypeMapping TypeName="FaridiaIronStoreServerModel.LoansServer">
+        <MappingFragment StoreEntitySet="LoansServer">
+          <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+          <ScalarProperty Name="StationCustomerId" ColumnName="StationCustomerId" />
+          <ScalarProperty Name="StationLoanId" ColumnName="StationLoanId" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="CashGiven" ColumnName="CashGiven" />
+          <ScalarProperty Name="LoanId" ColumnName="LoanId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoginServers">
+      <EntityTypeMapping TypeName="FaridiaIronStoreServerModel.LoginServer">
+        <MappingFragment StoreEntitySet="LoginServer">
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderLineServers">
+      <EntityTypeMapping TypeName="FaridiaIronStoreServerModel.OrderLineServer">
+        <MappingFragment StoreEntitySet="OrderLineServer">
+          <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+          <ScalarProperty Name="StationOrderId" ColumnName="StationOrderId" />
+          <ScalarProperty Name="StationOrderLineId" ColumnName="StationOrderLineId" />
+          <ScalarProperty Name="OrderLineId" ColumnName="OrderLineId" />
+          <ScalarProperty Name="Lengths" ColumnName="Lengths" />
+          <ScalarProperty Name="Bundle" ColumnName="Bundle" />
+          <ScalarProperty Name="PieceCut" ColumnName="PieceCut" />
+          <ScalarProperty Name="PricePerUnit" ColumnName="PricePerUnit" />
+          <ScalarProperty Name="WeightInKg" ColumnName="WeightInKg" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderPaymentMadeServers">
+      <EntityTypeMapping TypeName="FaridiaIronStoreServerModel.OrderPaymentMadeServer">
+        <MappingFragment StoreEntitySet="OrderPaymentMadeServer">
+          <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+          <ScalarProperty Name="StationOrderId" ColumnName="StationOrderId" />
+          <ScalarProperty Name="StationCustomerId" ColumnName="StationCustomerId" />
+          <ScalarProperty Name="StationOrderPaymentMadeId" ColumnName="StationOrderPaymentMadeId" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="PaymentMade" ColumnName="PaymentMade" />
+          <ScalarProperty Name="OrderPaymentMadeId" ColumnName="OrderPaymentMadeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderServers">
+      <EntityTypeMapping TypeName="FaridiaIronStoreServerModel.OrderServer">
+        <MappingFragment StoreEntitySet="OrderServer">
+          <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+          <ScalarProperty Name="StationCustomerId" ColumnName="StationCustomerId" />
+          <ScalarProperty Name="StationOrderId" ColumnName="StationOrderId" />
+          <ScalarProperty Name="IsDelivered" ColumnName="IsDelivered" />
+          <ScalarProperty Name="IsAdvanceOrder" ColumnName="IsAdvanceOrder" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SupplierBankDetailServers">
+      <EntityTypeMapping TypeName="FaridiaIronStoreServerModel.SupplierBankDetailServer">
+        <MappingFragment StoreEntitySet="SupplierBankDetailServer">
+          <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+          <ScalarProperty Name="StationSupplierId" ColumnName="StationSupplierId" />
+          <ScalarProperty Name="StationSupplierBankId" ColumnName="StationSupplierBankId" />
+          <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+          <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+          <ScalarProperty Name="SupplierBankId" ColumnName="SupplierBankId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SupplierDuePaymentsServers">
+      <EntityTypeMapping TypeName="FaridiaIronStoreServerModel.SupplierDuePaymentsServer">
+        <MappingFragment StoreEntitySet="SupplierDuePaymentsServer">
+          <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+          <ScalarProperty Name="StationSupplierId" ColumnName="StationSupplierId" />
+          <ScalarProperty Name="StationSupplierDuePaymentId" ColumnName="StationSupplierDuePaymentId" />
+          <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="AmountToBePaid" ColumnName="AmountToBePaid" />
+          <ScalarProperty Name="SupplierDuePaymentId" ColumnName="SupplierDuePaymentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SupplierPaymentMadeServers">
+      <EntityTypeMapping TypeName="FaridiaIronStoreServerModel.SupplierPaymentMadeServer">
+        <MappingFragment StoreEntitySet="SupplierPaymentMadeServer">
+          <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+          <ScalarProperty Name="StationSupplierId" ColumnName="StationSupplierId" />
+          <ScalarProperty Name="StationSupplierPaymentMadeId" ColumnName="StationSupplierPaymentMadeId" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="PaymentMade" ColumnName="PaymentMade" />
+          <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+          <ScalarProperty Name="SupplierPaymentMadeId" ColumnName="SupplierPaymentMadeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SupplierServers">
+      <EntityTypeMapping TypeName="FaridiaIronStoreServerModel.SupplierServer">
+        <MappingFragment StoreEntitySet="SupplierServer">
+          <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+          <ScalarProperty Name="StationSupplierId" ColumnName="StationSupplierId" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

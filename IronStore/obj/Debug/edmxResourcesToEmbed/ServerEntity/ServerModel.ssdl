@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FaridiaIronStoreServerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CustomerServer">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+      <PropertyRef Name="StationCustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="nchar" MaxLength="20" />
+    <Property Name="City" Type="nchar" MaxLength="30" />
+    <Property Name="Address" Type="nvarchar" MaxLength="200" />
+    <Property Name="StationCustomerId" Type="int" Nullable="false" />
+    <Property Name="StatusCode" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ItemServer">
+    <Key>
+      <PropertyRef Name="ItemId" />
+    </Key>
+    <Property Name="ItemId" Type="int" Nullable="false" />
+    <Property Name="ItemName" Type="nchar" MaxLength="30" />
+    <Property Name="Sotar" Type="nchar" MaxLength="20" />
+    <Property Name="thickness" Type="nchar" MaxLength="10" />
+    <Property Name="City" Type="nchar" MaxLength="20" />
+    <Property Name="IsExtra" Type="bit" Nullable="false" />
+    <Property Name="StatusCode" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LoanReturnedServer">
+    <Key>
+      <PropertyRef Name="LoanReturnId" />
+      <PropertyRef Name="StationLoanReturnId" />
+    </Key>
+    <Property Name="LoanReturnId" Type="int" Nullable="false" />
+    <Property Name="CashReturned" Type="int" Nullable="false" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+    <Property Name="Date" Type="datetime2" Precision="7" />
+    <Property Name="StationLoanReturnId" Type="int" Nullable="false" />
+    <Property Name="StationCustomerId" Type="int" Nullable="false" />
+    <Property Name="StatusCode" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LoansServer">
+    <Key>
+      <PropertyRef Name="LoanId" />
+      <PropertyRef Name="StationLoanId" />
+    </Key>
+    <Property Name="LoanId" Type="int" Nullable="false" />
+    <Property Name="CashGiven" Type="int" Nullable="false" />
+    <Property Name="Date" Type="datetime2" Precision="7" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+    <Property Name="StationLoanId" Type="int" Nullable="false" />
+    <Property Name="StationCustomerId" Type="int" Nullable="false" />
+    <Property Name="StatusCode" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LoginServer">
+    <Key>
+      <PropertyRef Name="LoginId" />
+    </Key>
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LoginId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Designation" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderLineServer">
+    <Key>
+      <PropertyRef Name="OrderLineId" />
+      <PropertyRef Name="StationOrderLineId" />
+    </Key>
+    <Property Name="OrderId" Type="int" Nullable="false" />
+    <Property Name="ItemId" Type="int" Nullable="false" />
+    <Property Name="WeightInKg" Type="float" />
+    <Property Name="PricePerUnit" Type="float" />
+    <Property Name="PieceCut" Type="int" />
+    <Property Name="Bundle" Type="int" />
+    <Property Name="Lengths" Type="float" />
+    <Property Name="OrderLineId" Type="int" Nullable="false" />
+    <Property Name="StationOrderLineId" Type="int" Nullable="false" />
+    <Property Name="StationOrderId" Type="int" Nullable="false" />
+    <Property Name="StatusCode" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderPaymentMadeServer">
+    <Key>
+      <PropertyRef Name="OrderPaymentMadeId" />
+      <PropertyRef Name="StationOrderPaymentMadeId" />
+    </Key>
+    <Property Name="OrderPaymentMadeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PaymentMade" Type="int" Nullable="false" />
+    <Property Name="Date" Type="datetime2" Precision="7" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+    <Property Name="OrderId" Type="int" />
+    <Property Name="StationOrderPaymentMadeId" Type="int" Nullable="false" />
+    <Property Name="StationCustomerId" Type="int" Nullable="false" />
+    <Property Name="StationOrderId" Type="int" />
+    <Property Name="StatusCode" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderServer">
+    <Key>
+      <PropertyRef Name="OrderId" />
+      <PropertyRef Name="StationOrderId" />
+    </Key>
+    <Property Name="OrderId" Type="int" Nullable="false" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+    <Property Name="OrderDate" Type="datetime2" Precision="7" />
+    <Property Name="Address" Type="nvarchar" MaxLength="150" />
+    <Property Name="DeliveryDate" Type="datetime2" Precision="7" />
+    <Property Name="Description" Type="nvarchar" MaxLength="200" />
+    <Property Name="IsAdvanceOrder" Type="bit" Nullable="false" />
+    <Property Name="IsDelivered" Type="bit" Nullable="false" />
+    <Property Name="StationOrderId" Type="int" Nullable="false" />
+    <Property Name="StationCustomerId" Type="int" Nullable="false" />
+    <Property Name="StatusCode" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SupplierBankDetailServer">
+    <Key>
+      <PropertyRef Name="SupplierBankId" />
+      <PropertyRef Name="StationSupplierBankId" />
+    </Key>
+    <Property Name="SupplierBankId" Type="int" Nullable="false" />
+    <Property Name="SupplierId" Type="int" Nullable="false" />
+    <Property Name="AccountNo" Type="nchar" MaxLength="30" />
+    <Property Name="StationSupplierBankId" Type="int" Nullable="false" />
+    <Property Name="StationSupplierId" Type="int" Nullable="false" />
+    <Property Name="StatusCode" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SupplierDuePaymentsServer">
+    <Key>
+      <PropertyRef Name="SupplierDuePaymentId" />
+      <PropertyRef Name="StationSupplierDuePaymentId" />
+    </Key>
+    <Property Name="SupplierDuePaymentId" Type="int" Nullable="false" />
+    <Property Name="AmountToBePaid" Type="int" Nullable="false" />
+    <Property Name="Date" Type="datetime2" Precision="7" />
+    <Property Name="SupplierId" Type="int" Nullable="false" />
+    <Property Name="StationSupplierDuePaymentId" Type="int" Nullable="false" />
+    <Property Name="StationSupplierId" Type="int" Nullable="false" />
+    <Property Name="StatusCode" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SupplierPaymentMadeServer">
+    <Key>
+      <PropertyRef Name="SupplierPaymentMadeId" />
+      <PropertyRef Name="StationSupplierPaymentMadeId" />
+    </Key>
+    <Property Name="SupplierPaymentMadeId" Type="int" Nullable="false" />
+    <Property Name="SupplierId" Type="int" Nullable="false" />
+    <Property Name="PaymentMade" Type="int" Nullable="false" />
+    <Property Name="Date" Type="datetime2" Precision="7" />
+    <Property Name="StationSupplierPaymentMadeId" Type="int" Nullable="false" />
+    <Property Name="StationSupplierId" Type="int" Nullable="false" />
+    <Property Name="StatusCode" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SupplierServer">
+    <Key>
+      <PropertyRef Name="SupplierId" />
+      <PropertyRef Name="StationSupplierId" />
+    </Key>
+    <Property Name="SupplierId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="50" />
+    <Property Name="Phone" Type="nchar" MaxLength="20" />
+    <Property Name="Address" Type="nchar" MaxLength="150" />
+    <Property Name="City" Type="nchar" MaxLength="30" />
+    <Property Name="StationSupplierId" Type="int" Nullable="false" />
+    <Property Name="StatusCode" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Loan_Customer">
+    <End Role="CustomerServer" Type="Self.CustomerServer" Multiplicity="1" />
+    <End Role="LoansServer" Type="Self.LoansServer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerServer">
+        <PropertyRef Name="CustomerId" />
+        <PropertyRef Name="StationCustomerId" />
+      </Principal>
+      <Dependent Role="LoansServer">
+        <PropertyRef Name="CustomerId" />
+        <PropertyRef Name="StationCustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LoanReturned_Customer">
+    <End Role="CustomerServer" Type="Self.CustomerServer" Multiplicity="1" />
+    <End Role="LoanReturnedServer" Type="Self.LoanReturnedServer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerServer">
+        <PropertyRef Name="CustomerId" />
+        <PropertyRef Name="StationCustomerId" />
+      </Principal>
+      <Dependent Role="LoanReturnedServer">
+        <PropertyRef Name="CustomerId" />
+        <PropertyRef Name="StationCustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Customer">
+    <End Role="CustomerServer" Type="Self.CustomerServer" Multiplicity="1" />
+    <End Role="OrderServer" Type="Self.OrderServer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerServer">
+        <PropertyRef Name="CustomerId" />
+        <PropertyRef Name="StationCustomerId" />
+      </Principal>
+      <Dependent Role="OrderServer">
+        <PropertyRef Name="CustomerId" />
+        <PropertyRef Name="StationCustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderLine_Item">
+    <End Role="ItemServer" Type="Self.ItemServer" Multiplicity="1" />
+    <End Role="OrderLineServer" Type="Self.OrderLineServer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemServer">
+        <PropertyRef Name="ItemId" />
+      </Principal>
+      <Dependent Role="OrderLineServer">
+        <PropertyRef Name="ItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderLine_Order">
+    <End Role="OrderServer" Type="Self.OrderServer" Multiplicity="1" />
+    <End Role="OrderLineServer" Type="Self.OrderLineServer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderServer">
+        <PropertyRef Name="OrderId" />
+        <PropertyRef Name="StationOrderId" />
+      </Principal>
+      <Dependent Role="OrderLineServer">
+        <PropertyRef Name="OrderId" />
+        <PropertyRef Name="StationOrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderPaymentMade_Customer">
+    <End Role="CustomerServer" Type="Self.CustomerServer" Multiplicity="1" />
+    <End Role="OrderPaymentMadeServer" Type="Self.OrderPaymentMadeServer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerServer">
+        <PropertyRef Name="CustomerId" />
+        <PropertyRef Name="StationCustomerId" />
+      </Principal>
+      <Dependent Role="OrderPaymentMadeServer">
+        <PropertyRef Name="CustomerId" />
+        <PropertyRef Name="StationCustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderPaymentMade_orders">
+    <End Role="OrderServer" Type="Self.OrderServer" Multiplicity="0..1" />
+    <End Role="OrderPaymentMadeServer" Type="Self.OrderPaymentMadeServer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderServer">
+        <PropertyRef Name="OrderId" />
+        <PropertyRef Name="StationOrderId" />
+      </Principal>
+      <Dependent Role="OrderPaymentMadeServer">
+        <PropertyRef Name="OrderId" />
+        <PropertyRef Name="StationOrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SupplierBankDetail_Supplier">
+    <End Role="SupplierServer" Type="Self.SupplierServer" Multiplicity="1" />
+    <End Role="SupplierBankDetailServer" Type="Self.SupplierBankDetailServer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SupplierServer">
+        <PropertyRef Name="SupplierId" />
+        <PropertyRef Name="StationSupplierId" />
+      </Principal>
+      <Dependent Role="SupplierBankDetailServer">
+        <PropertyRef Name="SupplierId" />
+        <PropertyRef Name="StationSupplierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SupplierDuePayments_Supplier">
+    <End Role="SupplierServer" Type="Self.SupplierServer" Multiplicity="1" />
+    <End Role="SupplierDuePaymentsServer" Type="Self.SupplierDuePaymentsServer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SupplierServer">
+        <PropertyRef Name="SupplierId" />
+        <PropertyRef Name="StationSupplierId" />
+      </Principal>
+      <Dependent Role="SupplierDuePaymentsServer">
+        <PropertyRef Name="SupplierId" />
+        <PropertyRef Name="StationSupplierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SupplierPaymentMade_Supplier">
+    <End Role="SupplierServer" Type="Self.SupplierServer" Multiplicity="1" />
+    <End Role="SupplierPaymentMadeServer" Type="Self.SupplierPaymentMadeServer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SupplierServer">
+        <PropertyRef Name="SupplierId" />
+        <PropertyRef Name="StationSupplierId" />
+      </Principal>
+      <Dependent Role="SupplierPaymentMadeServer">
+        <PropertyRef Name="SupplierId" />
+        <PropertyRef Name="StationSupplierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FaridiaIronStoreServerModelStoreContainer">
+    <EntitySet Name="CustomerServer" EntityType="Self.CustomerServer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ItemServer" EntityType="Self.ItemServer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoanReturnedServer" EntityType="Self.LoanReturnedServer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoansServer" EntityType="Self.LoansServer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoginServer" EntityType="Self.LoginServer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderLineServer" EntityType="Self.OrderLineServer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderPaymentMadeServer" EntityType="Self.OrderPaymentMadeServer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderServer" EntityType="Self.OrderServer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SupplierBankDetailServer" EntityType="Self.SupplierBankDetailServer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SupplierDuePaymentsServer" EntityType="Self.SupplierDuePaymentsServer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SupplierPaymentMadeServer" EntityType="Self.SupplierPaymentMadeServer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SupplierServer" EntityType="Self.SupplierServer" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Loan_Customer" Association="Self.FK_Loan_Customer">
+      <End Role="CustomerServer" EntitySet="CustomerServer" />
+      <End Role="LoansServer" EntitySet="LoansServer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LoanReturned_Customer" Association="Self.FK_LoanReturned_Customer">
+      <End Role="CustomerServer" EntitySet="CustomerServer" />
+      <End Role="LoanReturnedServer" EntitySet="LoanReturnedServer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
+      <End Role="CustomerServer" EntitySet="CustomerServer" />
+      <End Role="OrderServer" EntitySet="OrderServer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderLine_Item" Association="Self.FK_OrderLine_Item">
+      <End Role="ItemServer" EntitySet="ItemServer" />
+      <End Role="OrderLineServer" EntitySet="OrderLineServer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderLine_Order" Association="Self.FK_OrderLine_Order">
+      <End Role="OrderServer" EntitySet="OrderServer" />
+      <End Role="OrderLineServer" EntitySet="OrderLineServer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderPaymentMade_Customer" Association="Self.FK_OrderPaymentMade_Customer">
+      <End Role="CustomerServer" EntitySet="CustomerServer" />
+      <End Role="OrderPaymentMadeServer" EntitySet="OrderPaymentMadeServer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderPaymentMade_orders" Association="Self.FK_OrderPaymentMade_orders">
+      <End Role="OrderServer" EntitySet="OrderServer" />
+      <End Role="OrderPaymentMadeServer" EntitySet="OrderPaymentMadeServer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SupplierBankDetail_Supplier" Association="Self.FK_SupplierBankDetail_Supplier">
+      <End Role="SupplierServer" EntitySet="SupplierServer" />
+      <End Role="SupplierBankDetailServer" EntitySet="SupplierBankDetailServer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SupplierDuePayments_Supplier" Association="Self.FK_SupplierDuePayments_Supplier">
+      <End Role="SupplierServer" EntitySet="SupplierServer" />
+      <End Role="SupplierDuePaymentsServer" EntitySet="SupplierDuePaymentsServer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SupplierPaymentMade_Supplier" Association="Self.FK_SupplierPaymentMade_Supplier">
+      <End Role="SupplierServer" EntitySet="SupplierServer" />
+      <End Role="SupplierPaymentMadeServer" EntitySet="SupplierPaymentMadeServer" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

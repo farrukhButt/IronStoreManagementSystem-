@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FaridiaIronStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="LoanReturneds" Relationship="Self.FK_LoanReturned_Customer" FromRole="Customer" ToRole="LoanReturned" />
+    <NavigationProperty Name="Loans" Relationship="Self.FK_Loans_Customer" FromRole="Customer" ToRole="Loans" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
+    <NavigationProperty Name="OrderPaymentMades" Relationship="Self.FK_OrderPaymentMade_Customer" FromRole="Customer" ToRole="OrderPaymentMade" />
+  </EntityType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="ItemId" />
+    </Key>
+    <Property Name="ItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemName" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="Sotar" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="thickness" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="OrderLines" Relationship="Self.FK_OrderLine_Item" FromRole="Item" ToRole="OrderLine" />
+    <Property Name="IsExtra" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="LoanReturned">
+    <Key>
+      <PropertyRef Name="LoanReturnId" />
+    </Key>
+    <Property Name="LoanReturnId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CashReturned" Type="Double" Nullable="false" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="7" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_LoanReturned_Customer" FromRole="LoanReturned" ToRole="Customer" />
+  </EntityType>
+  <EntityType Name="Loan">
+    <Key>
+      <PropertyRef Name="LoanId" />
+    </Key>
+    <Property Name="LoanId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CashGiven" Type="Double" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="7" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_Loans_Customer" FromRole="Loans" ToRole="Customer" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="LoginId" />
+    </Key>
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LoginId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Designation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerId" Type="Int32" />
+    <Property Name="OrderDate" Type="DateTime" Precision="7" />
+    <Property Name="Address" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="DeliveryDate" Type="DateTime" Precision="7" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="IsAdvanceOrder" Type="Boolean" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
+    <NavigationProperty Name="OrderLines" Relationship="Self.FK_OrderLine_Order" FromRole="Order" ToRole="OrderLine" />
+    <NavigationProperty Name="OrderPaymentMades" Relationship="Self.FK_OrderPaymentMade_Order" FromRole="Order" ToRole="OrderPaymentMade" />
+  </EntityType>
+  <EntityType Name="OrderLine">
+    <Key>
+      <PropertyRef Name="OrderLineId" />
+    </Key>
+    <Property Name="OrderLineId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderId" Type="Int32" Nullable="false" />
+    <Property Name="ItemId" Type="Int32" Nullable="false" />
+    <Property Name="WeightInKg" Type="Double" />
+    <Property Name="PricePerUnit" Type="Double" />
+    <Property Name="PieceCut" Type="Int32" />
+    <Property Name="IsReturned" Type="Boolean" />
+    <Property Name="Bundle" Type="Int32" />
+    <Property Name="Lengths" Type="Double" />
+    <NavigationProperty Name="Item" Relationship="Self.FK_OrderLine_Item" FromRole="OrderLine" ToRole="Item" />
+    <NavigationProperty Name="Order" Relationship="Self.FK_OrderLine_Order" FromRole="OrderLine" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="OrderPaymentMade">
+    <Key>
+      <PropertyRef Name="OrderPaymentMadeId" />
+    </Key>
+    <Property Name="OrderPaymentMadeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PaymentMade" Type="Double" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="7" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="OrderId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_OrderPaymentMade_Customer" FromRole="OrderPaymentMade" ToRole="Customer" />
+    <NavigationProperty Name="Order" Relationship="Self.FK_OrderPaymentMade_Order" FromRole="OrderPaymentMade" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="SupplierId" />
+    </Key>
+    <Property Name="SupplierId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="SupplierBankDetails" Relationship="Self.FK_SupplierBankDetail_SupplierBankDetail" FromRole="Supplier" ToRole="SupplierBankDetail" />
+    <NavigationProperty Name="SupplierDuePayments" Relationship="Self.FK_SupplierDuePayments_Supplier" FromRole="Supplier" ToRole="SupplierDuePayments" />
+  </EntityType>
+  <EntityType Name="SupplierBankDetail">
+    <Key>
+      <PropertyRef Name="SupplierBankId" />
+    </Key>
+    <Property Name="SupplierBankId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SupplierId" Type="Int32" Nullable="false" />
+    <Property Name="AccountNo" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Supplier" Relationship="Self.FK_SupplierBankDetail_SupplierBankDetail" FromRole="SupplierBankDetail" ToRole="Supplier" />
+  </EntityType>
+  <EntityType Name="SupplierDuePayment">
+    <Key>
+      <PropertyRef Name="SupplierDuePaymentId" />
+    </Key>
+    <Property Name="SupplierDuePaymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AmountToBePaid" Type="Double" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="7" />
+    <Property Name="SupplierId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Supplier" Relationship="Self.FK_SupplierDuePayments_Supplier" FromRole="SupplierDuePayments" ToRole="Supplier" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_LoanReturned_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="LoanReturned" Type="Self.LoanReturned" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="LoanReturned">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Loans_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Loans" Type="Self.Loan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="Loans">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderPaymentMade_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="OrderPaymentMade" Type="Self.OrderPaymentMade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="OrderPaymentMade">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderLine_Item">
+    <End Role="Item" Type="Self.Item" Multiplicity="1" />
+    <End Role="OrderLine" Type="Self.OrderLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ItemId" />
+      </Principal>
+      <Dependent Role="OrderLine">
+        <PropertyRef Name="ItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderLine_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="OrderLine" Type="Self.OrderLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderId" />
+      </Principal>
+      <Dependent Role="OrderLine">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderPaymentMade_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="OrderPaymentMade" Type="Self.OrderPaymentMade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderId" />
+      </Principal>
+      <Dependent Role="OrderPaymentMade">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SupplierBankDetail_SupplierBankDetail">
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+    <End Role="SupplierBankDetail" Type="Self.SupplierBankDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="SupplierId" />
+      </Principal>
+      <Dependent Role="SupplierBankDetail">
+        <PropertyRef Name="SupplierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SupplierDuePayments_Supplier">
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+    <End Role="SupplierDuePayments" Type="Self.SupplierDuePayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="SupplierId" />
+      </Principal>
+      <Dependent Role="SupplierDuePayments">
+        <PropertyRef Name="SupplierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FaridiaIronStoreEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Items" EntityType="Self.Item" />
+    <EntitySet Name="LoanReturneds" EntityType="Self.LoanReturned" />
+    <EntitySet Name="Loans" EntityType="Self.Loan" />
+    <EntitySet Name="Logins" EntityType="Self.Login" />
+    <EntitySet Name="Orders" EntityType="Self.Order" />
+    <EntitySet Name="OrderLines" EntityType="Self.OrderLine" />
+    <EntitySet Name="OrderPaymentMades" EntityType="Self.OrderPaymentMade" />
+    <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
+    <EntitySet Name="SupplierBankDetails" EntityType="Self.SupplierBankDetail" />
+    <EntitySet Name="SupplierDuePayments" EntityType="Self.SupplierDuePayment" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_LoanReturned_Customer" Association="Self.FK_LoanReturned_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="LoanReturned" EntitySet="LoanReturneds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Loans_Customer" Association="Self.FK_Loans_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Loans" EntitySet="Loans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderPaymentMade_Customer" Association="Self.FK_OrderPaymentMade_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="OrderPaymentMade" EntitySet="OrderPaymentMades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderLine_Item" Association="Self.FK_OrderLine_Item">
+      <End Role="Item" EntitySet="Items" />
+      <End Role="OrderLine" EntitySet="OrderLines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderLine_Order" Association="Self.FK_OrderLine_Order">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="OrderLine" EntitySet="OrderLines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderPaymentMade_Order" Association="Self.FK_OrderPaymentMade_Order">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="OrderPaymentMade" EntitySet="OrderPaymentMades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SupplierBankDetail_SupplierBankDetail" Association="Self.FK_SupplierBankDetail_SupplierBankDetail">
+      <End Role="Supplier" EntitySet="Suppliers" />
+      <End Role="SupplierBankDetail" EntitySet="SupplierBankDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SupplierDuePayments_Supplier" Association="Self.FK_SupplierDuePayments_Supplier">
+      <End Role="Supplier" EntitySet="Suppliers" />
+      <End Role="SupplierDuePayments" EntitySet="SupplierDuePayments" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

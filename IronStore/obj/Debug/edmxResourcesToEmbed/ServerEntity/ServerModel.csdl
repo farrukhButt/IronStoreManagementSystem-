@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FaridiaIronStoreServerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="FaridiaIronStoreServerEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CustomerServers" EntityType="FaridiaIronStoreServerModel.CustomerServer" />
+    <EntitySet Name="ItemServers" EntityType="FaridiaIronStoreServerModel.ItemServer" />
+    <EntitySet Name="LoanReturnedServers" EntityType="FaridiaIronStoreServerModel.LoanReturnedServer" />
+    <EntitySet Name="LoansServers" EntityType="FaridiaIronStoreServerModel.LoansServer" />
+    <EntitySet Name="LoginServers" EntityType="FaridiaIronStoreServerModel.LoginServer" />
+    <EntitySet Name="OrderLineServers" EntityType="FaridiaIronStoreServerModel.OrderLineServer" />
+    <EntitySet Name="OrderPaymentMadeServers" EntityType="FaridiaIronStoreServerModel.OrderPaymentMadeServer" />
+    <EntitySet Name="OrderServers" EntityType="FaridiaIronStoreServerModel.OrderServer" />
+    <EntitySet Name="SupplierBankDetailServers" EntityType="FaridiaIronStoreServerModel.SupplierBankDetailServer" />
+    <EntitySet Name="SupplierDuePaymentsServers" EntityType="FaridiaIronStoreServerModel.SupplierDuePaymentsServer" />
+    <EntitySet Name="SupplierPaymentMadeServers" EntityType="FaridiaIronStoreServerModel.SupplierPaymentMadeServer" />
+    <EntitySet Name="SupplierServers" EntityType="FaridiaIronStoreServerModel.SupplierServer" />
+    <AssociationSet Name="FK_Loan_Customer" Association="FaridiaIronStoreServerModel.FK_Loan_Customer">
+      <End Role="CustomerServer" EntitySet="CustomerServers" />
+      <End Role="LoansServer" EntitySet="LoansServers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LoanReturned_Customer" Association="FaridiaIronStoreServerModel.FK_LoanReturned_Customer">
+      <End Role="CustomerServer" EntitySet="CustomerServers" />
+      <End Role="LoanReturnedServer" EntitySet="LoanReturnedServers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Customer" Association="FaridiaIronStoreServerModel.FK_Order_Customer">
+      <End Role="CustomerServer" EntitySet="CustomerServers" />
+      <End Role="OrderServer" EntitySet="OrderServers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderPaymentMade_Customer" Association="FaridiaIronStoreServerModel.FK_OrderPaymentMade_Customer">
+      <End Role="CustomerServer" EntitySet="CustomerServers" />
+      <End Role="OrderPaymentMadeServer" EntitySet="OrderPaymentMadeServers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderLine_Item" Association="FaridiaIronStoreServerModel.FK_OrderLine_Item">
+      <End Role="ItemServer" EntitySet="ItemServers" />
+      <End Role="OrderLineServer" EntitySet="OrderLineServers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderLine_Order" Association="FaridiaIronStoreServerModel.FK_OrderLine_Order">
+      <End Role="OrderServer" EntitySet="OrderServers" />
+      <End Role="OrderLineServer" EntitySet="OrderLineServers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderPaymentMade_orders" Association="FaridiaIronStoreServerModel.FK_OrderPaymentMade_orders">
+      <End Role="OrderServer" EntitySet="OrderServers" />
+      <End Role="OrderPaymentMadeServer" EntitySet="OrderPaymentMadeServers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SupplierBankDetail_Supplier" Association="FaridiaIronStoreServerModel.FK_SupplierBankDetail_Supplier">
+      <End Role="SupplierServer" EntitySet="SupplierServers" />
+      <End Role="SupplierBankDetailServer" EntitySet="SupplierBankDetailServers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SupplierDuePayments_Supplier" Association="FaridiaIronStoreServerModel.FK_SupplierDuePayments_Supplier">
+      <End Role="SupplierServer" EntitySet="SupplierServers" />
+      <End Role="SupplierDuePaymentsServer" EntitySet="SupplierDuePaymentsServers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SupplierPaymentMade_Supplier" Association="FaridiaIronStoreServerModel.FK_SupplierPaymentMade_Supplier">
+      <End Role="SupplierServer" EntitySet="SupplierServers" />
+      <End Role="SupplierPaymentMadeServer" EntitySet="SupplierPaymentMadeServers" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="CustomerServer">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+      <PropertyRef Name="StationCustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="StationCustomerId" Type="Int32" Nullable="false" />
+    <Property Name="StatusCode" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="LoansServers" Relationship="FaridiaIronStoreServerModel.FK_Loan_Customer" FromRole="CustomerServer" ToRole="LoansServer" />
+    <NavigationProperty Name="LoanReturnedServers" Relationship="FaridiaIronStoreServerModel.FK_LoanReturned_Customer" FromRole="CustomerServer" ToRole="LoanReturnedServer" />
+    <NavigationProperty Name="OrderServers" Relationship="FaridiaIronStoreServerModel.FK_Order_Customer" FromRole="CustomerServer" ToRole="OrderServer" />
+    <NavigationProperty Name="OrderPaymentMadeServers" Relationship="FaridiaIronStoreServerModel.FK_OrderPaymentMade_Customer" FromRole="CustomerServer" ToRole="OrderPaymentMadeServer" />
+  </EntityType>
+  <EntityType Name="ItemServer">
+    <Key>
+      <PropertyRef Name="ItemId" />
+    </Key>
+    <Property Name="ItemId" Type="Int32" Nullable="false" />
+    <Property Name="ItemName" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="Sotar" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="thickness" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="IsExtra" Type="Boolean" Nullable="false" />
+    <Property Name="StatusCode" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="OrderLineServers" Relationship="FaridiaIronStoreServerModel.FK_OrderLine_Item" FromRole="ItemServer" ToRole="OrderLineServer" />
+  </EntityType>
+  <EntityType Name="LoanReturnedServer">
+    <Key>
+      <PropertyRef Name="LoanReturnId" />
+      <PropertyRef Name="StationLoanReturnId" />
+    </Key>
+    <Property Name="LoanReturnId" Type="Int32" Nullable="false" />
+    <Property Name="CashReturned" Type="Int32" Nullable="false" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="7" />
+    <Property Name="StationLoanReturnId" Type="Int32" Nullable="false" />
+    <Property Name="StationCustomerId" Type="Int32" Nullable="false" />
+    <Property Name="StatusCode" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CustomerServer" Relationship="FaridiaIronStoreServerModel.FK_LoanReturned_Customer" FromRole="LoanReturnedServer" ToRole="CustomerServer" />
+  </EntityType>
+  <EntityType Name="LoansServer">
+    <Key>
+      <PropertyRef Name="LoanId" />
+      <PropertyRef Name="StationLoanId" />
+    </Key>
+    <Property Name="LoanId" Type="Int32" Nullable="false" />
+    <Property Name="CashGiven" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="7" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="StationLoanId" Type="Int32" Nullable="false" />
+    <Property Name="StationCustomerId" Type="Int32" Nullable="false" />
+    <Property Name="StatusCode" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CustomerServer" Relationship="FaridiaIronStoreServerModel.FK_Loan_Customer" FromRole="LoansServer" ToRole="CustomerServer" />
+  </EntityType>
+  <EntityType Name="LoginServer">
+    <Key>
+      <PropertyRef Name="LoginId" />
+    </Key>
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LoginId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Designation" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="OrderLineServer">
+    <Key>
+      <PropertyRef Name="OrderLineId" />
+      <PropertyRef Name="StationOrderLineId" />
+    </Key>
+    <Property Name="OrderId" Type="Int32" Nullable="false" />
+    <Property Name="ItemId" Type="Int32" Nullable="false" />
+    <Property Name="WeightInKg" Type="Double" />
+    <Property Name="PricePerUnit" Type="Double" />
+    <Property Name="PieceCut" Type="Int32" />
+    <Property Name="Bundle" Type="Int32" />
+    <Property Name="Lengths" Type="Double" />
+    <Property Name="OrderLineId" Type="Int32" Nullable="false" />
+    <Property Name="StationOrderLineId" Type="Int32" Nullable="false" />
+    <Property Name="StationOrderId" Type="Int32" Nullable="false" />
+    <Property Name="StatusCode" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ItemServer" Relationship="FaridiaIronStoreServerModel.FK_OrderLine_Item" FromRole="OrderLineServer" ToRole="ItemServer" />
+    <NavigationProperty Name="OrderServer" Relationship="FaridiaIronStoreServerModel.FK_OrderLine_Order" FromRole="OrderLineServer" ToRole="OrderServer" />
+  </EntityType>
+  <EntityType Name="OrderPaymentMadeServer">
+    <Key>
+      <PropertyRef Name="OrderPaymentMadeId" />
+      <PropertyRef Name="StationOrderPaymentMadeId" />
+    </Key>
+    <Property Name="OrderPaymentMadeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PaymentMade" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="7" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="OrderId" Type="Int32" />
+    <Property Name="StationOrderPaymentMadeId" Type="Int32" Nullable="false" />
+    <Property Name="StationCustomerId" Type="Int32" Nullable="false" />
+    <Property Name="StationOrderId" Type="Int32" />
+    <Property Name="StatusCode" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CustomerServer" Relationship="FaridiaIronStoreServerModel.FK_OrderPaymentMade_Customer" FromRole="OrderPaymentMadeServer" ToRole="CustomerServer" />
+    <NavigationProperty Name="OrderServer" Relationship="FaridiaIronStoreServerModel.FK_OrderPaymentMade_orders" FromRole="OrderPaymentMadeServer" ToRole="OrderServer" />
+  </EntityType>
+  <EntityType Name="OrderServer">
+    <Key>
+      <PropertyRef Name="OrderId" />
+      <PropertyRef Name="StationOrderId" />
+    </Key>
+    <Property Name="OrderId" Type="Int32" Nullable="false" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="OrderDate" Type="DateTime" Precision="7" />
+    <Property Name="Address" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="DeliveryDate" Type="DateTime" Precision="7" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="IsAdvanceOrder" Type="Boolean" Nullable="false" />
+    <Property Name="IsDelivered" Type="Boolean" Nullable="false" />
+    <Property Name="StationOrderId" Type="Int32" Nullable="false" />
+    <Property Name="StationCustomerId" Type="Int32" Nullable="false" />
+    <Property Name="StatusCode" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CustomerServer" Relationship="FaridiaIronStoreServerModel.FK_Order_Customer" FromRole="OrderServer" ToRole="CustomerServer" />
+    <NavigationProperty Name="OrderLineServers" Relationship="FaridiaIronStoreServerModel.FK_OrderLine_Order" FromRole="OrderServer" ToRole="OrderLineServer" />
+    <NavigationProperty Name="OrderPaymentMadeServers" Relationship="FaridiaIronStoreServerModel.FK_OrderPaymentMade_orders" FromRole="OrderServer" ToRole="OrderPaymentMadeServer" />
+  </EntityType>
+  <EntityType Name="SupplierBankDetailServer">
+    <Key>
+      <PropertyRef Name="SupplierBankId" />
+      <PropertyRef Name="StationSupplierBankId" />
+    </Key>
+    <Property Name="SupplierBankId" Type="Int32" Nullable="false" />
+    <Property Name="SupplierId" Type="Int32" Nullable="false" />
+    <Property Name="AccountNo" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="StationSupplierBankId" Type="Int32" Nullable="false" />
+    <Property Name="StationSupplierId" Type="Int32" Nullable="false" />
+    <Property Name="StatusCode" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="SupplierServer" Relationship="FaridiaIronStoreServerModel.FK_SupplierBankDetail_Supplier" FromRole="SupplierBankDetailServer" ToRole="SupplierServer" />
+  </EntityType>
+  <EntityType Name="SupplierDuePaymentsServer">
+    <Key>
+      <PropertyRef Name="SupplierDuePaymentId" />
+      <PropertyRef Name="StationSupplierDuePaymentId" />
+    </Key>
+    <Property Name="SupplierDuePaymentId" Type="Int32" Nullable="false" />
+    <Property Name="AmountToBePaid" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="7" />
+    <Property Name="SupplierId" Type="Int32" Nullable="false" />
+    <Property Name="StationSupplierDuePaymentId" Type="Int32" Nullable="false" />
+    <Property Name="StationSupplierId" Type="Int32" Nullable="false" />
+    <Property Name="StatusCode" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="SupplierServer" Relationship="FaridiaIronStoreServerModel.FK_SupplierDuePayments_Supplier" FromRole="SupplierDuePaymentsServer" ToRole="SupplierServer" />
+  </EntityType>
+  <EntityType Name="SupplierPaymentMadeServer">
+    <Key>
+      <PropertyRef Name="SupplierPaymentMadeId" />
+      <PropertyRef Name="StationSupplierPaymentMadeId" />
+    </Key>
+    <Property Name="SupplierPaymentMadeId" Type="Int32" Nullable="false" />
+    <Property Name="SupplierId" Type="Int32" Nullable="false" />
+    <Property Name="PaymentMade" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="7" />
+    <Property Name="StationSupplierPaymentMadeId" Type="Int32" Nullable="false" />
+    <Property Name="StationSupplierId" Type="Int32" Nullable="false" />
+    <Property Name="StatusCode" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="SupplierServer" Relationship="FaridiaIronStoreServerModel.FK_SupplierPaymentMade_Supplier" FromRole="SupplierPaymentMadeServer" ToRole="SupplierServer" />
+  </EntityType>
+  <EntityType Name="SupplierServer">
+    <Key>
+      <PropertyRef Name="SupplierId" />
+      <PropertyRef Name="StationSupplierId" />
+    </Key>
+    <Property Name="SupplierId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="StationSupplierId" Type="Int32" Nullable="false" />
+    <Property Name="StatusCode" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="SupplierBankDetailServers" Relationship="FaridiaIronStoreServerModel.FK_SupplierBankDetail_Supplier" FromRole="SupplierServer" ToRole="SupplierBankDetailServer" />
+    <NavigationProperty Name="SupplierDuePaymentsServers" Relationship="FaridiaIronStoreServerModel.FK_SupplierDuePayments_Supplier" FromRole="SupplierServer" ToRole="SupplierDuePaymentsServer" />
+    <NavigationProperty Name="SupplierPaymentMadeServers" Relationship="FaridiaIronStoreServerModel.FK_SupplierPaymentMade_Supplier" FromRole="SupplierServer" ToRole="SupplierPaymentMadeServer" />
+  </EntityType>
+  <Association Name="FK_Loan_Customer">
+    <End Type="FaridiaIronStoreServerModel.CustomerServer" Role="CustomerServer" Multiplicity="1" />
+    <End Type="FaridiaIronStoreServerModel.LoansServer" Role="LoansServer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerServer">
+        <PropertyRef Name="CustomerId" />
+        <PropertyRef Name="StationCustomerId" />
+      </Principal>
+      <Dependent Role="LoansServer">
+        <PropertyRef Name="CustomerId" />
+        <PropertyRef Name="StationCustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LoanReturned_Customer">
+    <End Type="FaridiaIronStoreServerModel.CustomerServer" Role="CustomerServer" Multiplicity="1" />
+    <End Type="FaridiaIronStoreServerModel.LoanReturnedServer" Role="LoanReturnedServer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerServer">
+        <PropertyRef Name="CustomerId" />
+        <PropertyRef Name="StationCustomerId" />
+      </Principal>
+      <Dependent Role="LoanReturnedServer">
+        <PropertyRef Name="CustomerId" />
+        <PropertyRef Name="StationCustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Customer">
+    <End Type="FaridiaIronStoreServerModel.CustomerServer" Role="CustomerServer" Multiplicity="1" />
+    <End Type="FaridiaIronStoreServerModel.OrderServer" Role="OrderServer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerServer">
+        <PropertyRef Name="CustomerId" />
+        <PropertyRef Name="StationCustomerId" />
+      </Principal>
+      <Dependent Role="OrderServer">
+        <PropertyRef Name="CustomerId" />
+        <PropertyRef Name="StationCustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderPaymentMade_Customer">
+    <End Type="FaridiaIronStoreServerModel.CustomerServer" Role="CustomerServer" Multiplicity="1" />
+    <End Type="FaridiaIronStoreServerModel.OrderPaymentMadeServer" Role="OrderPaymentMadeServer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerServer">
+        <PropertyRef Name="CustomerId" />
+        <PropertyRef Name="StationCustomerId" />
+      </Principal>
+      <Dependent Role="OrderPaymentMadeServer">
+        <PropertyRef Name="CustomerId" />
+        <PropertyRef Name="StationCustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderLine_Item">
+    <End Type="FaridiaIronStoreServerModel.ItemServer" Role="ItemServer" Multiplicity="1" />
+    <End Type="FaridiaIronStoreServerModel.OrderLineServer" Role="OrderLineServer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemServer">
+        <PropertyRef Name="ItemId" />
+      </Principal>
+      <Dependent Role="OrderLineServer">
+        <PropertyRef Name="ItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderLine_Order">
+    <End Type="FaridiaIronStoreServerModel.OrderServer" Role="OrderServer" Multiplicity="1" />
+    <End Type="FaridiaIronStoreServerModel.OrderLineServer" Role="OrderLineServer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderServer">
+        <PropertyRef Name="OrderId" />
+        <PropertyRef Name="StationOrderId" />
+      </Principal>
+      <Dependent Role="OrderLineServer">
+        <PropertyRef Name="OrderId" />
+        <PropertyRef Name="StationOrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderPaymentMade_orders">
+    <End Type="FaridiaIronStoreServerModel.OrderServer" Role="OrderServer" Multiplicity="0..1" />
+    <End Type="FaridiaIronStoreServerModel.OrderPaymentMadeServer" Role="OrderPaymentMadeServer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderServer">
+        <PropertyRef Name="OrderId" />
+        <PropertyRef Name="StationOrderId" />
+      </Principal>
+      <Dependent Role="OrderPaymentMadeServer">
+        <PropertyRef Name="OrderId" />
+        <PropertyRef Name="StationOrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SupplierBankDetail_Supplier">
+    <End Type="FaridiaIronStoreServerModel.SupplierServer" Role="SupplierServer" Multiplicity="1" />
+    <End Type="FaridiaIronStoreServerModel.SupplierBankDetailServer" Role="SupplierBankDetailServer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SupplierServer">
+        <PropertyRef Name="SupplierId" />
+        <PropertyRef Name="StationSupplierId" />
+      </Principal>
+      <Dependent Role="SupplierBankDetailServer">
+        <PropertyRef Name="SupplierId" />
+        <PropertyRef Name="StationSupplierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SupplierDuePayments_Supplier">
+    <End Type="FaridiaIronStoreServerModel.SupplierServer" Role="SupplierServer" Multiplicity="1" />
+    <End Type="FaridiaIronStoreServerModel.SupplierDuePaymentsServer" Role="SupplierDuePaymentsServer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SupplierServer">
+        <PropertyRef Name="SupplierId" />
+        <PropertyRef Name="StationSupplierId" />
+      </Principal>
+      <Dependent Role="SupplierDuePaymentsServer">
+        <PropertyRef Name="SupplierId" />
+        <PropertyRef Name="StationSupplierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SupplierPaymentMade_Supplier">
+    <End Type="FaridiaIronStoreServerModel.SupplierServer" Role="SupplierServer" Multiplicity="1" />
+    <End Type="FaridiaIronStoreServerModel.SupplierPaymentMadeServer" Role="SupplierPaymentMadeServer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SupplierServer">
+        <PropertyRef Name="SupplierId" />
+        <PropertyRef Name="StationSupplierId" />
+      </Principal>
+      <Dependent Role="SupplierPaymentMadeServer">
+        <PropertyRef Name="SupplierId" />
+        <PropertyRef Name="StationSupplierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

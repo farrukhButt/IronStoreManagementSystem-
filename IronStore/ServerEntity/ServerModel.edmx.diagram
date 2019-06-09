@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="99ed1ed55e074954a9b3e71fbcd5bdc4" Name="Diagram1" ZoomLevel="54">
+        <EntityTypeShape EntityType="FaridiaIronStoreServerModel.CustomerServer" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="FaridiaIronStoreServerModel.ItemServer" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="FaridiaIronStoreServerModel.LoanReturnedServer" Width="1.5" PointX="3" PointY="8.625" />
+        <EntityTypeShape EntityType="FaridiaIronStoreServerModel.LoansServer" Width="1.5" PointX="3" PointY="12" />
+        <EntityTypeShape EntityType="FaridiaIronStoreServerModel.LoginServer" Width="1.5" PointX="7.75" PointY="12.5" />
+        <EntityTypeShape EntityType="FaridiaIronStoreServerModel.OrderLineServer" Width="1.5" PointX="5.25" PointY="4.25" />
+        <EntityTypeShape EntityType="FaridiaIronStoreServerModel.OrderPaymentMadeServer" Width="1.5" PointX="5.25" PointY="9" />
+        <EntityTypeShape EntityType="FaridiaIronStoreServerModel.OrderServer" Width="1.5" PointX="3" PointY="4.125" />
+        <EntityTypeShape EntityType="FaridiaIronStoreServerModel.SupplierBankDetailServer" Width="1.5" PointX="10" PointY="5.375" />
+        <EntityTypeShape EntityType="FaridiaIronStoreServerModel.SupplierDuePaymentsServer" Width="1.5" PointX="10" PointY="8.5" />
+        <EntityTypeShape EntityType="FaridiaIronStoreServerModel.SupplierPaymentMadeServer" Width="1.5" PointX="10" PointY="2.125" />
+        <EntityTypeShape EntityType="FaridiaIronStoreServerModel.SupplierServer" Width="1.5" PointX="7.75" PointY="5.125" />
+        <AssociationConnector Association="FaridiaIronStoreServerModel.FK_Loan_Customer" />
+        <AssociationConnector Association="FaridiaIronStoreServerModel.FK_LoanReturned_Customer" />
+        <AssociationConnector Association="FaridiaIronStoreServerModel.FK_Order_Customer" />
+        <AssociationConnector Association="FaridiaIronStoreServerModel.FK_OrderPaymentMade_Customer" />
+        <AssociationConnector Association="FaridiaIronStoreServerModel.FK_OrderLine_Item" />
+        <AssociationConnector Association="FaridiaIronStoreServerModel.FK_OrderLine_Order" />
+        <AssociationConnector Association="FaridiaIronStoreServerModel.FK_OrderPaymentMade_orders" />
+        <AssociationConnector Association="FaridiaIronStoreServerModel.FK_SupplierBankDetail_Supplier" />
+        <AssociationConnector Association="FaridiaIronStoreServerModel.FK_SupplierDuePayments_Supplier" />
+        <AssociationConnector Association="FaridiaIronStoreServerModel.FK_SupplierPaymentMade_Supplier" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

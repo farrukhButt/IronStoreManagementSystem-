@@ -1,0 +1,577 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0F5B5950-6333-44B2-99B8-15A2DED0BD76}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IronStore</RootNamespace>
+    <AssemblyName>IronStore</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Add New Supplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add New Supplier.designer.cs">
+      <DependentUpon>Add New Supplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Add New User.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add New User.designer.cs">
+      <DependentUpon>Add New User.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Add New Customer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add New Customer.designer.cs">
+      <DependentUpon>Add New Customer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddExtraItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddExtraItem.Designer.cs">
+      <DependentUpon>AddExtraItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddItem.Designer.cs">
+      <DependentUpon>AddItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddOldPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddOldPayment.Designer.cs">
+      <DependentUpon>AddOldPayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddOrder.Designer.cs">
+      <DependentUpon>AddOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddOrderPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddOrderPayment.Designer.cs">
+      <DependentUpon>AddOrderPayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common Controls.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common Controls.Designer.cs">
+      <DependentUpon>Common Controls.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CompleteOrderDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompleteOrderDetails.Designer.cs">
+      <DependentUpon>CompleteOrderDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteSupplier.designer.cs">
+      <DependentUpon>DeleteSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteUser.designer.cs">
+      <DependentUpon>DeleteUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditCustomer.Designer.cs">
+      <DependentUpon>EditCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditSupplier.designer.cs">
+      <DependentUpon>EditSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditUser.designer.cs">
+      <DependentUpon>EditUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Customer.cs">
+      <DependentUpon>EntityFrameWork.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\EntityFrameWork.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityFrameWork.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\EntityFrameWork.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityFrameWork.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\EntityFrameWork.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityFrameWork.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Item.cs">
+      <DependentUpon>EntityFrameWork.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Loan.cs">
+      <DependentUpon>EntityFrameWork.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\LoanReturned.cs">
+      <DependentUpon>EntityFrameWork.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Login.cs">
+      <DependentUpon>EntityFrameWork.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Order.cs">
+      <DependentUpon>EntityFrameWork.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\OrderLine.cs">
+      <DependentUpon>EntityFrameWork.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\OrderPaymentMade.cs">
+      <DependentUpon>EntityFrameWork.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Supplier.cs">
+      <DependentUpon>EntityFrameWork.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\SupplierBankDetail.cs">
+      <DependentUpon>EntityFrameWork.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\SupplierDuePayment.cs">
+      <DependentUpon>EntityFrameWork.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\SupplierPaymentMade.cs">
+      <DependentUpon>EntityFrameWork.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\CustomerHelper.cs" />
+    <Compile Include="Helpers\ItemDropDownList.cs" />
+    <Compile Include="Helpers\StationIdHelper.cs" />
+    <Compile Include="Invoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Invoice.Designer.cs">
+      <DependentUpon>Invoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Invoice2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Invoice2.Designer.cs">
+      <DependentUpon>Invoice2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InvoiceOrderList.cs" />
+    <Compile Include="LocalDBStatusCode.cs" />
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageUsers.designer.cs">
+      <DependentUpon>ManageUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderByCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderByCustomer.Designer.cs">
+      <DependentUpon>OrderByCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderByDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderByDate.Designer.cs">
+      <DependentUpon>OrderByDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderExtras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderExtras.Designer.cs">
+      <DependentUpon>OrderExtras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderReturn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderReturn.Designer.cs">
+      <DependentUpon>OrderReturn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PendingCustomerPayments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PendingCustomerPayments.Designer.cs">
+      <DependentUpon>PendingCustomerPayments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PendingOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PendingOrders.Designer.cs">
+      <DependentUpon>PendingOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PositiveBalanceCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PositiveBalanceCustomer.Designer.cs">
+      <DependentUpon>PositiveBalanceCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Entity\sysdiagram.cs">
+      <DependentUpon>EntityFrameWork.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PublishChanges.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PublishChanges.Designer.cs">
+      <DependentUpon>PublishChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports.Designer.cs">
+      <DependentUpon>Reports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReturnCustomerPayment.cs" />
+    <Compile Include="ReturnCustomerPayment.Designer.cs">
+      <DependentUpon>ReturnCustomerPayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServerDBStatusCode.cs" />
+    <Compile Include="ServerEntity\CustomerServer.cs">
+      <DependentUpon>ServerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServerEntity\ItemServer.cs">
+      <DependentUpon>ServerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServerEntity\LoanReturnedServer.cs">
+      <DependentUpon>ServerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServerEntity\LoansServer.cs">
+      <DependentUpon>ServerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServerEntity\LoginServer.cs">
+      <DependentUpon>ServerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServerEntity\OrderLineServer.cs">
+      <DependentUpon>ServerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServerEntity\OrderPaymentMadeServer.cs">
+      <DependentUpon>ServerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServerEntity\OrderServer.cs">
+      <DependentUpon>ServerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServerEntity\ServerModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ServerModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServerEntity\ServerModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ServerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServerEntity\ServerModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ServerModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ServerEntity\SupplierBankDetailServer.cs">
+      <DependentUpon>ServerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServerEntity\SupplierDuePaymentsServer.cs">
+      <DependentUpon>ServerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServerEntity\SupplierPaymentMadeServer.cs">
+      <DependentUpon>ServerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServerEntity\SupplierServer.cs">
+      <DependentUpon>ServerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServerSync\DownloadNewData.cs" />
+    <Compile Include="ServerSync\DownloadUpdatedData.cs" />
+    <Compile Include="ServerSync\UploadNewData.cs" />
+    <Compile Include="ServerSync\UploadUpdatedData.cs" />
+    <Compile Include="Station.cs" />
+    <Compile Include="SuppliersPayments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SuppliersPayments.Designer.cs">
+      <DependentUpon>SuppliersPayments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewCustomerPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewCustomerPayment.Designer.cs">
+      <DependentUpon>ViewCustomerPayment.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Add New Customer.resx">
+      <DependentUpon>Add New Customer.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="IronStoreMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IronStoreMain.designer.cs">
+      <DependentUpon>IronStoreMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ResetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResetPassword.Designer.cs">
+      <DependentUpon>ResetPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplier.designer.cs">
+      <DependentUpon>Supplier.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Add New Supplier.resx">
+      <DependentUpon>Add New Supplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Add New User.resx">
+      <DependentUpon>Add New User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddExtraItem.resx">
+      <DependentUpon>AddExtraItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddItem.resx">
+      <DependentUpon>AddItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddOldPayment.resx">
+      <DependentUpon>AddOldPayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddOrder.resx">
+      <DependentUpon>AddOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddOrderPayment.resx">
+      <DependentUpon>AddOrderPayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common Controls.resx">
+      <DependentUpon>Common Controls.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompleteOrderDetails.resx">
+      <DependentUpon>CompleteOrderDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeleteSupplier.resx">
+      <DependentUpon>DeleteSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeleteUser.resx">
+      <DependentUpon>DeleteUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditCustomer.resx">
+      <DependentUpon>EditCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditSupplier.resx">
+      <DependentUpon>EditSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditUser.resx">
+      <DependentUpon>EditUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Invoice.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Invoice.resx">
+      <DependentUpon>Invoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Invoice2.resx">
+      <DependentUpon>Invoice2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageUsers.resx">
+      <DependentUpon>ManageUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderByCustomer.resx">
+      <DependentUpon>OrderByCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderByDate.resx">
+      <DependentUpon>OrderByDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderExtras.resx">
+      <DependentUpon>OrderExtras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderReturn.resx">
+      <DependentUpon>OrderReturn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PendingCustomerPayments.resx">
+      <DependentUpon>PendingCustomerPayments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PendingOrders.resx">
+      <DependentUpon>PendingOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PositiveBalanceCustomer.resx">
+      <DependentUpon>PositiveBalanceCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="IronStoreMain.resx">
+      <DependentUpon>IronStoreMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PublishChanges.resx">
+      <DependentUpon>PublishChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports.resx">
+      <DependentUpon>Reports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResetPassword.resx">
+      <DependentUpon>ResetPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReturnCustomerPayment.resx">
+      <DependentUpon>ReturnCustomerPayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supplier.resx">
+      <DependentUpon>Supplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SuppliersPayments.resx">
+      <DependentUpon>SuppliersPayments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewCustomerPayment.resx">
+      <DependentUpon>ViewCustomerPayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Entity\EntityFrameWork.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EntityFrameWork.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Entity\EntityFrameWork.edmx.diagram">
+      <DependentUpon>EntityFrameWork.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\InvoiceOrderList.datasource" />
+    <None Include="Properties\DataSources\IronStore.Entity.OrderLine.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EntityDeploy Include="ServerEntity\ServerModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ServerModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ServerEntity\ServerModel.edmx.diagram">
+      <DependentUpon>ServerModel.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Entity\EntityFrameWork.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EntityFrameWork.edmx</DependentUpon>
+      <LastGenOutput>EntityFrameWork.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entity\EntityFrameWork.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EntityFrameWork.edmx</DependentUpon>
+      <LastGenOutput>EntityFrameWork.cs</LastGenOutput>
+    </Content>
+    <Content Include="ServerEntity\ServerModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ServerModel.edmx</DependentUpon>
+      <LastGenOutput>ServerModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ServerEntity\ServerModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ServerModel.edmx</DependentUpon>
+      <LastGenOutput>ServerModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
